@@ -4,55 +4,92 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="bg-zinc-950 py-28 text-white"
+      className="bg-[#09090B] px-6 py-28 text-white"
     >
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="mx-auto max-w-7xl">
+        {/* Badge */}
 
-        <div className="mb-16 text-center">
+        <span className="rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2 text-sm font-medium text-green-400">
+          Projects
+        </span>
 
-          <p className="uppercase tracking-[5px] text-green-400">
-            Portfolio
-          </p>
+        {/* Heading */}
 
-          <h2 className="mt-4 text-5xl font-bold">
-            Featured Projects
-          </h2>
+        <h2 className="mt-8 text-4xl font-bold md:text-5xl">
+          Featured
+          <span className="text-green-400">
+            {" "}Projects
+          </span>
+        </h2>
 
-          <p className="mx-auto mt-5 max-w-3xl text-zinc-400">
-            A collection of my cybersecurity learning journey,
-            practical research and security projects.
-          </p>
+        <p className="mt-8 max-w-3xl text-lg leading-8 text-zinc-400">
+          Projects that represent my learning journey in
+          cybersecurity, web development and research.
+        </p>
 
-        </div>
+        {/* Cards */}
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <div
-              key={project.id}
-              className="rounded-2xl border border-zinc-800 bg-zinc-900 p-8 transition duration-300 hover:-translate-y-2 hover:border-green-500 hover:shadow-[0_0_25px_rgba(34,197,94,0.2)]"
+              key={project.title}
+              className="
+                rounded-2xl
+                border
+                border-green-500/20
+                bg-white/5
+                p-7
+                backdrop-blur-xl
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:border-green-400
+                hover:bg-green-500/10
+              "
             >
-              <div className="text-5xl">
-                {project.icon}
+              <div className="flex items-center justify-between">
+                <h3 className="text-2xl font-semibold text-green-400">
+                  {project.title}
+                </h3>
+
+                <span className="rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs text-green-300">
+                  {project.status}
+                </span>
               </div>
 
-              <h3 className="mt-6 text-2xl font-bold">
-                {project.title}
-              </h3>
-
-              <p className="mt-4 leading-7 text-zinc-400">
+              <p className="mt-5 leading-7 text-zinc-400">
                 {project.description}
               </p>
 
-              <span className="mt-8 inline-block rounded-full bg-green-500/10 px-4 py-2 text-sm text-green-400">
-                {project.category}
-              </span>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-green-500/20 bg-black/30 px-3 py-1 text-sm text-zinc-300"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
+              <div className="mt-8 flex gap-4">
+                <a
+                  href={project.github}
+                  className="rounded-xl border border-green-500/30 px-5 py-2 transition hover:bg-green-500 hover:text-black"
+                >
+                  GitHub
+                </a>
+
+                <a
+                  href={project.live}
+                  className="rounded-xl border border-zinc-700 px-5 py-2 transition hover:border-green-500"
+                >
+                  Live Demo
+                </a>
+              </div>
             </div>
           ))}
-
         </div>
-
       </div>
     </section>
   );

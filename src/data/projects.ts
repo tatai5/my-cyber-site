@@ -1,55 +1,57 @@
 export const projects = [
   {
-    id: 1,
-    icon: "🌐",
-    title: "Web Security Research",
+    title: "Cyber Journal",
     description:
-      "Research notes covering XSS, SQL Injection, CSRF, SSRF, IDOR, Authentication and API Security.",
-    category: "Web Security",
+      "Personal cybersecurity portfolio built with Next.js and TypeScript.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+    status: "In Progress",
+    github: "#",
+    live: "#",
   },
 
   {
-    id: 2,
-    icon: "🛡️",
-    title: "Bug Bounty Journey",
+    title: "DesignArena Clone",
     description:
-      "Learning journey, recon workflow, methodologies and write-ups.",
-    category: "Bug Bounty",
+      "Frontend practice project inspired by a modern AI platform.",
+    technologies: [
+      "React",
+      "Vite",
+      "CSS",
+    ],
+    status: "Completed",
+    github: "#",
+    live: "#",
   },
 
   {
-    id: 3,
-    icon: "🕵️",
-    title: "OSINT Investigation",
+    title: "OSINT Notes",
     description:
-      "OSINT techniques, investigation workflows and useful resources.",
-    category: "OSINT",
+      "Collection of practical OSINT techniques and learning resources.",
+    technologies: [
+      "OSINT",
+      "Linux",
+      "Research",
+    ],
+    status: "Learning",
+    github: "#",
+    live: "#",
   },
 
   {
-    id: 4,
-    icon: "🐧",
-    title: "Linux Lab",
+    title: "Bug Bounty Notes",
     description:
-      "Linux commands, Bash scripting and automation notes.",
-    category: "Linux",
-  },
-
-  {
-    id: 5,
-    icon: "🐍",
-    title: "Python Security Tools",
-    description:
-      "Python scripts and automation tools for cybersecurity.",
-    category: "Python",
-  },
-
-  {
-    id: 6,
-    icon: "📡",
-    title: "Network Analysis",
-    description:
-      "Networking fundamentals, Wireshark and protocol analysis.",
-    category: "Networking",
+      "Write-ups and learning notes from bug bounty practice.",
+    technologies: [
+      "Web Security",
+      "Markdown",
+      "Recon",
+    ],
+    status: "Research",
+    github: "#",
+    live: "#",
   },
 ];
