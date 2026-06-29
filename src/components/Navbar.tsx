@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -18,9 +20,8 @@ export default function Navbar() {
           "
         >
           {/* Logo */}
-
-          <a
-            href="#home"
+          <Link
+            href="/"
             className="flex items-center gap-3"
           >
             <div
@@ -48,24 +49,22 @@ export default function Navbar() {
                 Cyber Journal
               </p>
             </div>
-          </a>
+          </Link>
 
           {/* Navigation */}
-
           <ul className="hidden items-center gap-8 lg:flex">
-
             <li>
-              <a
-                href="#home"
+              <Link
+                href="/"
                 className="text-zinc-300 transition hover:text-green-400"
               >
                 Home
-              </a>
+              </Link>
             </li>
 
             <li>
               <a
-                href="#about"
+                href="/#about"
                 className="text-zinc-300 transition hover:text-green-400"
               >
                 About
@@ -74,7 +73,7 @@ export default function Navbar() {
 
             <li>
               <a
-                href="#skills"
+                href="/#skills"
                 className="text-zinc-300 transition hover:text-green-400"
               >
                 Skills
@@ -83,7 +82,7 @@ export default function Navbar() {
 
             <li>
               <a
-                href="#projects"
+                href="/#projects"
                 className="text-zinc-300 transition hover:text-green-400"
               >
                 Projects
@@ -92,7 +91,7 @@ export default function Navbar() {
 
             <li>
               <a
-                href="#research"
+                href="/#research"
                 className="text-zinc-300 transition hover:text-green-400"
               >
                 Research
@@ -100,20 +99,17 @@ export default function Navbar() {
             </li>
 
             <li>
-              <a
-                href="#notes"
+              <Link
+                href="/notes"
                 className="text-zinc-300 transition hover:text-green-400"
               >
                 Notes
-              </a>
+              </Link>
             </li>
-
           </ul>
 
           {/* Right Side */}
-
           <div className="flex items-center gap-4">
-
             <a
               href="https://github.com/"
               target="_blank"
@@ -133,7 +129,6 @@ export default function Navbar() {
             >
               GitHub
             </a>
-
           </div>
         </nav>
       </div>
