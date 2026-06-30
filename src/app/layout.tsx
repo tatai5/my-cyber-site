@@ -15,7 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://your-domain.com"),
+  manifest: "/site.webmanifest",
 
   title: {
     default: "Saswata | Cybersecurity Research",
@@ -50,12 +51,26 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
   },
+
+  alternates: {
+    canonical: "https://your-domain.com",
+  },
+
+  category: "technology",
 
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://example.com",
+    url: "https://your-domain.com",
     siteName: "Cyber Journal",
 
     title: "Saswata | Cybersecurity Research",
@@ -96,7 +111,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#09090B] text-white">
+      <body className="min-h-full flex flex-col bg-[#09090B] text-white antialiased selection:bg-green-500 selection:text-black">
         {children}
       </body>
     </html>

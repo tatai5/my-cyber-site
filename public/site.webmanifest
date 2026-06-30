@@ -1,0 +1,22 @@
+{
+  "name": "Saswata | Cyber Journal",
+  "short_name": "CyberJournal",
+  "description": "Cybersecurity Research, OSINT, Bug Bounty, Web Security and Technical Notes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090B",
+  "theme_color": "#22C55E",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
