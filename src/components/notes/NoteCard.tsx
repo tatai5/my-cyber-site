@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Note } from "@/data/notesData";
 
 interface NoteCardProps {
@@ -15,8 +16,8 @@ export default function NoteCard({ note }: NoteCardProps) {
         border
         border-green-500/20
         bg-[#0d1117]/80
-        backdrop-blur-xl
         p-6
+        backdrop-blur-xl
         transition-all
         duration-300
         hover:-translate-y-2
@@ -131,7 +132,8 @@ export default function NoteCard({ note }: NoteCardProps) {
           </p>
         </div>
 
-        <button
+        <Link
+          href={`/notes/${note.slug}`}
           className="
             rounded-xl
             border
@@ -148,7 +150,7 @@ export default function NoteCard({ note }: NoteCardProps) {
           "
         >
           Read →
-        </button>
+        </Link>
       </div>
     </article>
   );

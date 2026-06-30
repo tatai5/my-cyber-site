@@ -1,5 +1,6 @@
 export interface Note {
   id: number;
+  slug: string;
   title: string;
   category: string;
   summary: string;
@@ -12,6 +13,7 @@ export interface Note {
 export const notesData: Note[] = [
   {
     id: 1,
+    slug: "introduction-to-xss",
     title: "Introduction to XSS",
     category: "Web Security",
     summary:
@@ -24,6 +26,7 @@ export const notesData: Note[] = [
 
   {
     id: 2,
+    slug: "osint-basics",
     title: "OSINT Basics",
     category: "OSINT",
     summary:
@@ -36,6 +39,7 @@ export const notesData: Note[] = [
 
   {
     id: 3,
+    slug: "linux-privilege-escalation",
     title: "Linux Privilege Escalation",
     category: "Linux",
     summary:
@@ -48,6 +52,7 @@ export const notesData: Note[] = [
 
   {
     id: 4,
+    slug: "bug-bounty-methodology",
     title: "Bug Bounty Methodology",
     category: "Bug Bounty",
     summary:
@@ -60,6 +65,7 @@ export const notesData: Note[] = [
 
   {
     id: 5,
+    slug: "sql-injection-essentials",
     title: "SQL Injection Essentials",
     category: "Web Security",
     summary:
@@ -72,6 +78,7 @@ export const notesData: Note[] = [
 
   {
     id: 6,
+    slug: "network-enumeration",
     title: "Network Enumeration",
     category: "Networking",
     summary:
