@@ -1,59 +1,188 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const navItems = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "Notes",
+    href: "/notes",
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+  },
+  {
+    label: "Research",
+    href: "/research",
+  },
+  {
+    label: "Writeups",
+    href: "/writeups",
+  },
+  {
+    label: "Tools",
+    href: "/tools",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+  },
+];
 
 export default function Navbar() {
   const pathname = usePathname();
+
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const sectionLinks = [
-    { label: "About", hash: "#about" },
-    { label: "Skills", hash: "#skills" },
-    { label: "Projects", hash: "#projects" },
-    { label: "Research", hash: "#research" },
-  ];
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
 
-  const buildHref = (hash: string) => pathname === "/" ? hash : `/${hash}`;
+    onScroll();
 
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-6 pt-5">
-        <nav className="flex items-center justify-between rounded-2xl border border-white/10 bg-zinc-900/70 px-6 py-4 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
+        <nav
+          className={`flex items-center justify-between rounded-2xl border px-6 py-4 transition-all duration-300 ${scrolled
+              ? "border-green-500/20 bg-zinc-950/85 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,.45)]"
+              : "border-white/10 bg-zinc-900/70 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,.35)]"
+            }`}
+        >
+          {/* Logo */}
+
           <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-500 font-bold text-black">S</div>
-            <div>
-              <h2 className="font-bold text-white">Saswata</h2>
-              <p className="text-xs text-zinc-400">Cyber Journal</p>
+            <Image
+              src="/favicon.svg"
+              alt="Logo"
+              width={42}
+              height={42}
+              className="rounded-xl"
+              priority
+            />
+
+            <div className="leading-tight">
+              <h2 className="font-bold tracking-wide text-white">
+                Saswata
+              </h2>
+
+              <p className="text-xs text-zinc-400">
+                Cybersecurity Research
+              </p>
             </div>
           </Link>
 
+          {/* Desktop Menu */}
+
           <ul className="hidden items-center gap-8 lg:flex">
-            <li><Link href="/" className={pathname === "/" ? "text-green-400" : "text-zinc-300 hover:text-green-400"}>Home</Link></li>
-            {sectionLinks.map(item => (
-              <li key={item.hash}><Link href={buildHref(item.hash)} className="text-zinc-300 hover:text-green-400">{item.label}</Link></li>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`relative pb-1 text-sm font-medium transition-all duration-300 ${pathname === item.href
+                      ? "text-green-400"
+                      : "text-zinc-300 hover:text-green-400"
+                    }`}
+                >
+                  {item.label}
+
+                  {pathname === item.href && (
+                    <span className="absolute inset-x-0 -bottom-1 h-0.5 rounded-full bg-green-400" />
+                  )}
+                </Link>
+              </li>
             ))}
-            <li><Link href="/notes" className={pathname.startsWith("/notes") ? "text-green-400" : "text-zinc-300 hover:text-green-400"}>Notes</Link></li>
-            <li><Link href="/contact" className={pathname === "/contact" ? "text-green-400" : "text-zinc-300 hover:text-green-400"}>Contact</Link></li>
           </ul>
 
+          {/* Right */}
+
           <div className="flex items-center gap-4">
-            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="hidden md:block rounded-xl border border-green-500/40 px-5 py-2 text-sm text-green-400 hover:bg-green-500 hover:text-black">GitHub</a>
-            <button className="text-3xl text-white lg:hidden" onClick={() => setMenuOpen(v => !v)}>☰</button>
+            <a
+              href="https://github.com/tatai5"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden rounded-xl border border-green-500/40 px-5 py-2 text-sm font-medium text-green-400 transition-all duration-300 hover:bg-green-500 hover:text-black md:block"
+            >
+              GitHub
+            </a>
+
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-3xl text-white transition hover:text-green-400 lg:hidden"
+            >
+              ☰
+            </button>
           </div>
         </nav>
-
         {menuOpen && (
-          <div className="mt-3 rounded-2xl border border-zinc-800 bg-zinc-900 p-5 lg:hidden">
-            <div className="flex flex-col gap-4">
-              <Link href="/" onClick={() => setMenuOpen(false)}>Home</Link>
-              {sectionLinks.map(item => (
-                <Link key={item.hash} href={buildHref(item.hash)} onClick={() => setMenuOpen(false)}>{item.label}</Link>
+          <div
+            className="
+            mt-3
+            overflow-hidden
+            rounded-2xl
+            border
+            border-green-500/20
+            bg-zinc-950/95
+            p-5
+            shadow-2xl
+            backdrop-blur-2xl
+            lg:hidden
+          "
+          >
+            <div className="flex flex-col gap-5">
+
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`rounded-lg px-2 py-2 text-base font-medium transition-all duration-300 ${pathname === item.href
+                      ? "bg-green-500/10 text-green-400"
+                      : "text-zinc-300 hover:bg-zinc-900 hover:text-green-400"
+                    }`}
+                >
+                  {item.label}
+                </Link>
               ))}
-              <Link href="/notes" onClick={() => setMenuOpen(false)}>Notes</Link>
-              <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
-              <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+              <a
+                href="https://github.com/tatai5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                mt-2
+                rounded-xl
+                border
+                border-green-500/40
+                px-4
+                py-3
+                text-center
+                font-medium
+                text-green-400
+                transition-all
+                duration-300
+                hover:bg-green-500
+                hover:text-black
+              "
+              >
+                GitHub
+              </a>
+
             </div>
           </div>
         )}
