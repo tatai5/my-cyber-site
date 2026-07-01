@@ -16,7 +16,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://your-domain.com"),
+
   manifest: "/site.webmanifest",
+
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-32x32.png",
+    apple: "/apple-touch-icon.png",
+  },
 
   title: {
     default: "Saswata | Cybersecurity Research",
