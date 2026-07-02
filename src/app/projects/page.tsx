@@ -5,6 +5,8 @@ import PageHeader from "@/components/common/PageHeader";
 import PageContainer from "@/components/common/PageContainer";
 import FeatureCard from "@/components/common/FeatureCard";
 
+import { projects } from "@/data/projects";
+
 export default function ProjectsPage() {
   return (
     <>
@@ -19,14 +21,14 @@ export default function ProjectsPage() {
         />
 
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, index) => (
+          {projects.map((project) => (
             <FeatureCard
-              key={index}
+              key={project.id}
               icon="🚀"
-              title="Project Title"
-              description="This project description is placeholder content. Real projects will be added after the website development is completed."
-              badge="Coming Soon"
-              buttonText="Details →"
+              title={project.title}
+              description={project.shortDescription}
+              badge={project.status}
+              href={`/projects/${project.slug}`}
             />
           ))}
         </div>
