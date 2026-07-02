@@ -1,19 +1,19 @@
 import Navbar from "@/components/layout/navbar/Navbar";
-import HomeSections from "@/components/home/HomeSections";
-
+import SkillsSection from "@/components/skills/SkillsSection";
 import Footer from "@/components/Footer";
-
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 
-export default function Home() {
+export default function SkillsPage() {
   return (
     <>
       <ScrollProgress />
 
       <Navbar />
 
-      <HomeSections />
+      <main className="pt-28">
+        <SkillsSection />
+      </main>
 
       <Footer />
 
