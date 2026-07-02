@@ -1,53 +1,35 @@
 type SkillCardProps = {
   title: string;
-  technologies: string[];
+  category: string;
+  level: number;
 };
 
 export default function SkillCard({
   title,
-  technologies,
+  category,
+  level,
 }: SkillCardProps) {
   return (
-    <div
-      className="
-        group
-        rounded-2xl
-        border
-        border-green-500/20
-        bg-zinc-900/60
-        p-7
-        backdrop-blur-xl
-        transition-all
-        duration-300
-        hover:-translate-y-2
-        hover:border-green-400
-        hover:shadow-[0_0_35px_rgba(34,197,94,0.15)]
-      "
-    >
-      <h3 className="text-2xl font-bold text-green-400">
-        {title}
-      </h3>
+    <div className="rounded-2xl border border-green-500/20 bg-zinc-900/60 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:border-green-400">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-bold text-green-400">
+          {title}
+        </h3>
 
-      <div className="mt-6 flex flex-wrap gap-3">
-        {technologies.map((tech) => (
-          <span
-            key={tech}
-            className="
-              rounded-full
-              border
-              border-green-500/20
-              bg-green-500/10
-              px-4
-              py-2
-              text-sm
-              text-zinc-200
-              transition
-              group-hover:border-green-400/40
-            "
-          >
-            {tech}
-          </span>
-        ))}
+        <span className="text-sm text-zinc-400">
+          {level}%
+        </span>
+      </div>
+
+      <p className="mt-2 text-sm text-zinc-500">
+        {category}
+      </p>
+
+      <div className="mt-5 h-2 overflow-hidden rounded-full bg-zinc-800">
+        <div
+          className="h-full rounded-full bg-green-500 transition-all duration-700"
+          style={{ width: `${level}%` }}
+        />
       </div>
     </div>
   );

@@ -11,6 +11,14 @@ const navItems = [
     href: "/",
   },
   {
+    label: "About",
+    href: "/#about",
+  },
+  {
+    label: "Skills",
+    href: "/#skills",
+  },
+  {
     label: "Notes",
     href: "/notes",
   },
@@ -21,14 +29,6 @@ const navItems = [
   {
     label: "Research",
     href: "/research",
-  },
-  {
-    label: "Writeups",
-    href: "/writeups",
-  },
-  {
-    label: "Tools",
-    href: "/tools",
   },
   {
     label: "Contact",
@@ -60,8 +60,8 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-6 pt-5">
         <nav
           className={`flex items-center justify-between rounded-2xl border px-6 py-4 transition-all duration-300 ${scrolled
-              ? "border-green-500/20 bg-zinc-950/85 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,.45)]"
-              : "border-white/10 bg-zinc-900/70 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,.35)]"
+            ? "border-green-500/20 bg-zinc-950/85 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,.45)]"
+            : "border-white/10 bg-zinc-900/70 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,.35)]"
             }`}
         >
           {/* Logo */}
@@ -95,8 +95,8 @@ export default function Navbar() {
                 <Link
                   href={item.href}
                   className={`relative pb-1 text-sm font-medium transition-all duration-300 ${pathname === item.href
-                      ? "text-green-400"
-                      : "text-zinc-300 hover:text-green-400"
+                    ? "text-green-400"
+                    : "text-zinc-300 hover:text-green-400"
                     }`}
                 >
                   {item.label}
@@ -152,8 +152,8 @@ export default function Navbar() {
                   href={item.href}
                   onClick={() => setMenuOpen(false)}
                   className={`rounded-lg px-2 py-2 text-base font-medium transition-all duration-300 ${pathname === item.href
-                      ? "bg-green-500/10 text-green-400"
-                      : "text-zinc-300 hover:bg-zinc-900 hover:text-green-400"
+                    ? "bg-green-500/10 text-green-400"
+                    : "text-zinc-300 hover:bg-zinc-900 hover:text-green-400"
                     }`}
                 >
                   {item.label}
